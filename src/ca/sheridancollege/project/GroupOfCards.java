@@ -26,6 +26,19 @@ public class GroupOfCards
         size = givenSize;
     }
     
+    public void generateHand()
+        {
+                int countCards = 0;
+		for(Card.Suit s: Card.Suit.values())
+                {
+                    for(Card.Value v: Card.Value.values())
+                    {
+                        cards.add(new Card(s,v));
+                        countCards++;
+                    }
+                }//end outter for
+        }//end method
+    
     /**
      * A method that will get the group of cards as an ArrayList
      * @return the group of cards.

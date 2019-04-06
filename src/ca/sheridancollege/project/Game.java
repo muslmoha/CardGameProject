@@ -53,11 +53,24 @@ public abstract class Game
      */
     public abstract void play();
     
+    public void register(Player p){
+        players.add(p);
+    }
+    
+    public void showPlayers(){
+        for (int i = 0; i<players.size(); i++){
+            System.out.println(players.get(i).getPlayerID());
+        }
+    }
+    
     /**
      * When the game is over, use this method to declare and display a winning
      * player.
      */
     public abstract void declareWinner();
+    
+    public abstract String rules();
+    //Explaining the game to new players, TODO
 
    
     
