@@ -18,25 +18,34 @@ public class GroupOfCards
 {
    
     //The group of cards, stored in an ArrayList
-    private ArrayList <Card> cards;
-    private int size;//the size of the grouping
+    private ArrayList <Card> deck;
+    private ArrayList <Card> playerHand;
+    private ArrayList <Card> cpHand;
     
-    public GroupOfCards(int givenSize)
+    public GroupOfCards()//initializes the deck upon creation
     {
-        size = givenSize;
-    }
-    
-    public void generateHand()
-        {
-                int countCards = 0;
+        int countCards = 0;
 		for(Card.Suit s: Card.Suit.values())
                 {
                     for(Card.Value v: Card.Value.values())
                     {
-                        cards.add(new Card(s,v));
+                        deck.add(new Card(s,v));
                         countCards++;
                     }
-                }//end outter for
+                }
+    }
+    
+    public void generateHand()
+        {
+                //end outter for
+                for (int index = 0; index<(deck.size()); index++){
+                    if(index<deck.size()/2){
+                        playerHand.add(deck.get(index));
+                    }
+                    else{
+                        cpHand.add(deck.get(index));
+                    }
+                }
         }//end method
     
     /**
@@ -45,26 +54,30 @@ public class GroupOfCards
      */
     public ArrayList<Card> showCards()
     {
-        return cards;
+        return deck;
     }
     
-    public void shuffle()
+    public ArrayList shuffle(ArrayList tempDeck)
     {
-        Collections.shuffle(cards);
+        Collections.shuffle(tempDeck);
+        return tempDeck;
     }
 
     /**
      * @return the size of the group of cards
      */
-    public int getSize() {
-        return size;
+    public int getSize(ArrayList tempDeck) {
+        return tempDeck.size();
     }
 
-    /**
-     * @param givenSize the max size for the group of cards
-     */
-    public void setSize(int givenSize) {
-        size = givenSize;
+    
+    public ArrayList getHand(String player){
+        if (player.equals("cpu")){
+            return cpHand;
+        }
+        else{
+            return playerHand;
+        }
     }
     
 }//end class

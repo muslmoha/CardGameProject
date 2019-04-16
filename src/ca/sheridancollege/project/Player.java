@@ -20,10 +20,19 @@ public class Player
      * A constructor that allows you to set the player's unique ID
      * @param name the unique ID to assign to this player.
      */
-    public Player(String name)
+    public Player(String name, ArrayList hand)
     {
         playerID= name;
-        
+        this.hand = hand;
+    }
+    
+    public Card playCard(){
+        Card c = hand.remove(0);//removes card from the beginning of the arrau
+        return c;
+    }
+    
+    public void addCard(Card c){
+        hand.add(c);//adds card to the end
     }
     
     /**

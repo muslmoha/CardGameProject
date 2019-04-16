@@ -19,25 +19,24 @@ public class War extends Game {
   @Override 
    public void play(){
        Scanner input = new Scanner(System.in);
-       int choice = input.nextInt();
+       GroupOfCards deck = new GroupOfCards();
        while (true){
+           int choice = input.nextInt();
            System.out.println("What move would you like to make?");
            System.out.println("1: play");
            System.out.println("2: shuffle");
            System.out.println("3: Forfeit");
-           //switch(choice){
-               //todo
-           //}
+           
        }
    }
    
    @Override
    public String rules(){
-       return null;
+       return "TODO";
    }
    
    @Override
-   public void declareWinner(){
-       System.out.println("You won");
+   public void declareWinner(Player p){
+       System.out.println(p.toString() + " wins");
    }
 }
