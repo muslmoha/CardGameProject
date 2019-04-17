@@ -11,10 +11,10 @@ package ca.sheridancollege.project;
  * should remember to add themselves as a modifier.
  * @author dancye, 2018
  */
-public class Card 
+public class Card implements Comparable<Card>
 {
     public enum Suit {HEARTS, CLUBS,SPADES,DIAMONDS};
-    public enum Value{ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING};
+    public enum Value{TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE};
     private Suit suit;
     private Value value;
      /*
@@ -30,6 +30,29 @@ public class Card
     //default modifier for child classes
     @Override
     public String toString(){
-        return suit + " of " + value;
+        return value + " of " + suit;
+    }
+    
+    public String getValue(){
+        return "" + value;
+    }
+    
+    public String getSuit(){
+        return "" + suit;
+    }
+    
+    @Override
+    public int compareTo(Card c){
+        int valcomp = Value.valueOf(c.getValue()).ordinal();
+        int valplay = Value.valueOf(value+"").ordinal();
+        if (valplay<valcomp){
+            return 1;//if the player's card is lower than the computer's return 1
+        }
+        else if(valplay>valcomp){
+            return -1;//if the players card is higher, then return -1
+        }
+        else{
+            return 0; //else return 0 if they are equal
+        }
     }
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * A class that models each Player in the game. Players have an identifier, which should be unique.
  * @author dancye, 2018
  */
-public class Player 
+public class Player //Represents the class that the human and computer player will be using
 {
     private String playerID; //the unique ID for this player
     private ArrayList<Card> hand;

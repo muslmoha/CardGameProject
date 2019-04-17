@@ -18,9 +18,9 @@ public class GroupOfCards
 {
    
     //The group of cards, stored in an ArrayList
-    private ArrayList <Card> deck;
-    private ArrayList <Card> playerHand;
-    private ArrayList <Card> cpHand;
+    private ArrayList <Card> deck =  new ArrayList<Card>();
+    private ArrayList <Card> playerHand =  new ArrayList<Card>();
+    private ArrayList <Card> cpHand =  new ArrayList<Card>();
     
     public GroupOfCards()//initializes the deck upon creation
     {
@@ -29,7 +29,7 @@ public class GroupOfCards
                 {
                     for(Card.Value v: Card.Value.values())
                     {
-                        deck.add(new Card(s,v));
+                        deck.add(countCards, new Card(s,v));
                         countCards++;
                     }
                 }
@@ -38,6 +38,7 @@ public class GroupOfCards
     public void generateHand()
         {
                 //end outter for
+                Collections.shuffle(deck);
                 for (int index = 0; index<(deck.size()); index++){
                     if(index<deck.size()/2){
                         playerHand.add(deck.get(index));
@@ -56,12 +57,7 @@ public class GroupOfCards
     {
         return deck;
     }
-    
-    public ArrayList shuffle(ArrayList tempDeck)
-    {
-        Collections.shuffle(tempDeck);
-        return tempDeck;
-    }
+   
 
     /**
      * @return the size of the group of cards
