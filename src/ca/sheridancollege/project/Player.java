@@ -27,12 +27,20 @@ public class Player
     }
     
     public Card playCard(){
-        Card c = hand.remove(0);//removes card from the beginning of the arrau
-        return c;
+     //removes card from the beginning of the array
+        return hand.get(0);
     }
     
     public void addCard(Card c){
-        hand.add(c);//adds card to the end
+        hand.add((hand.size()-1), c);//adds card to the end
+    }
+    
+    public void loseCard(Card c){
+        hand.remove(c);
+    }
+    
+    public void clearHand(){
+        hand.clear();
     }
     
     /**
@@ -41,6 +49,15 @@ public class Player
     public String getPlayerID() 
     {
         return playerID;
+    }
+    
+    public ArrayList getHand(){
+        return hand;
+    }
+    
+    public void setHand(ArrayList newHand){
+        hand.clear();
+        hand = newHand;
     }
 
     /**
