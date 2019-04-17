@@ -24,7 +24,7 @@ public abstract class Game
     }
 
     /**
-     * @return the gameName
+     * @return the gameName 
      */
     public String getGameName() 
     {
